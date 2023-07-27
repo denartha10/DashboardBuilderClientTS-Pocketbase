@@ -2,7 +2,7 @@
 	//easier than the FormForm component as there is no nested array just an object of keys and primitive
 
 	import type { SuperValidated } from 'sveltekit-superforms';
-	import { superForm } from 'sveltekit-superforms';
+	import { superForm } from 'sveltekit-superforms/client';
 	import * as flashModule from 'sveltekit-flash-message/client';
 	import type { infoComponentSchema } from '$lib';
 
@@ -34,7 +34,7 @@
 			name="title"
 			bind:value={$form.title}
 			placeholder="Title"
-			aria-invalid={$errors.title}
+			aria-invalid={$errors.title ? 'true' : undefined}
 			{...$constraints.title}
 		/>
 		<input
@@ -42,7 +42,7 @@
 			name="description"
 			bind:value={$form.description}
 			placeholder="Description"
-			aria-invalid={$errors.description}
+			aria-invalid={$errors.description ? 'true' : undefined}
 			{...$constraints.description}
 		/>
 	</fieldset>

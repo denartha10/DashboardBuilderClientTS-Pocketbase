@@ -8,9 +8,12 @@ dependencies:
   '@iconify/svelte':
     specifier: ^3.1.4
     version: 3.1.4(svelte@4.1.1)
-  '@pico@next':
-    specifier: link:@picocss/@pico@next
-    version: link:@picocss/@pico@next
+  '@picocss/pico':
+    specifier: 2.0.0-alpha1
+    version: 2.0.0-alpha1
+  pocketbase:
+    specifier: ^0.15.3
+    version: 0.15.3
   svelte-french-toast:
     specifier: ^1.2.0
     version: 1.2.0(svelte@4.1.1)
@@ -33,7 +36,7 @@ devDependencies:
     version: 8.45.0
   eslint-config-prettier:
     specifier: ^8.5.0
-    version: 8.8.0(eslint@8.45.0)
+    version: 8.9.0(eslint@8.45.0)
   eslint-plugin-svelte:
     specifier: ^2.30.0
     version: 2.32.4(eslint@8.45.0)(svelte@4.1.1)
@@ -62,7 +65,7 @@ devDependencies:
     specifier: ^5.0.0
     version: 5.1.6
   vite:
-    specifier: ^4.4.2
+    specifier: ^4.4.7
     version: 4.4.7(@types/node@20.4.5)
   vitest:
     specifier: ^0.32.2
@@ -408,6 +411,10 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
     dev: true
+
+  /@picocss/pico@2.0.0-alpha1:
+    resolution: {integrity: sha512-DIMBG+ssQHVKEkQuwUs3mfBqNotxIH59xCmrMA8jCtm0CyRmc8p+VfMW1YeBZpeEY/WiKNw8GTefpoLBFvdpug==}
+    dev: false
 
   /@polka/url@1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
@@ -999,8 +1006,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-config-prettier@8.8.0(eslint@8.45.0):
-    resolution: {integrity: sha512-wLbQiFre3tdGgpDv67NQKnJuTlcUVYHas3k+DZCc2U2BadthoEY4B7hLPvAxaqdyOGCzuLfii2fqGph10va7oA==}
+  /eslint-config-prettier@8.9.0(eslint@8.45.0):
+    resolution: {integrity: sha512-+sbni7NfVXnOpnRadUA8S28AUlsZt9GjgFvABIRL9Hkn8KqNzOp+7Lw4QWtrwn20KzU3wqu1QoOj2m+7rKRqkA==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
@@ -1626,6 +1633,10 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
     dev: true
+
+  /pocketbase@0.15.3:
+    resolution: {integrity: sha512-sjM0XO4wHUlVZs94VhRJi4FeYtbLqvxFbRDJlfjFb/4FkxypbGwxLM4HDAEr8q6jdreuxAM1/n/b5HB1GjQ1Vg==}
+    dev: false
 
   /postcss-load-config@3.1.4(postcss@8.4.27):
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}

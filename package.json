@@ -28,14 +28,15 @@
 		"sveltekit-superforms": "^1.5.0",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
-		"vite": "^4.4.2",
+		"vite": "^4.4.7",
 		"vitest": "^0.32.2",
 		"zod": "^3.21.4"
 	},
 	"type": "module",
 	"dependencies": {
 		"@iconify/svelte": "^3.1.4",
-		"@pico@next": "link:@picocss/@pico@next",
+		"@picocss/pico": "2.0.0-alpha1",
+		"pocketbase": "^0.15.3",
 		"svelte-french-toast": "^1.2.0"
 	}
 }

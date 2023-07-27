@@ -45,7 +45,7 @@
 				name="inputType"
 				bind:value={$form.field[i].inputType}
 				placeholder="Select Type"
-				aria-invalid={$errors.field[i].inputType}
+				aria-invalid={$errors.field?.[i].inputType ? 'true' : undefined}
 				{...$constraints.field?.inputType}
 			>
 				{#each FormTypeOptions as option}
@@ -60,7 +60,7 @@
 				name="inputName"
 				bind:value={$form.field[i].inputName}
 				placeholder="Input Name"
-				aria-invalid={$errors.field[i].inputName}
+				aria-invalid={$errors.field?.[i].inputName ? 'true' : undefined}
 				{...$constraints.field?.inputName}
 			/>
 

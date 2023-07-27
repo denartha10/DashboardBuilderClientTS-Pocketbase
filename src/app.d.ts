@@ -1,30 +1,49 @@
 // See https://kit.svelte.dev/docs/types#app
 
-import type { HTMLInputTypeAttribute } from "svelte/elements";
-import type { SuperValidated } from "sveltekit-superforms";
-import type { AnyZodObject, z } from "zod";
-import type { ConstructorOfATypedSvelteComponent } from "./types";
-import { tableComponentSchema, infoComponentSchema, formComponentSchema } from "$lib";
+import type { HTMLInputTypeAttribute } from 'svelte/elements';
+import type { SuperValidated } from 'sveltekit-superforms';
+import type { AnyZodObject, z } from 'zod';
+import type { ConstructorOfATypedSvelteComponent } from './types';
+import { tableComponentSchema, infoComponentSchema, formComponentSchema } from '$lib';
+import type { Record } from 'pocketbase';
+import type Pocketbase from 'pocketbase';
 
 // for information about these interfaces
 declare global {
 	namespace App {
 		// interface Error {}
-		type Maybe<T> = [Error | null, T | null]
+		type Maybe<T> = [Error | null, T | null];
 
 		//superforms message syncync
 		type Message = {
 			type: 'success' | 'error';
 			message: string;
-		}
+		};
+
+		type TYear = `${number}${number}${number}${number}`;
+		type TMonth = `${number}${number}`;
+		type TDay = `${number}${number}`;
+		type TDate = `${TYear}-${TMonth}-${TDay}`;
+
+		type THour = `${number}${number}`;
+		type TMinute = `${number}${number}`;
+		type TSecond = `${number}${number}`;
+		type TMillisecond = `${number}${number}${number}`;
+		type TTime = `${THour}:${TMinute}:${TSecond}.${TMillisecond}`;
+
+		type TDateTime = `${TDate} ${TTime}Z`;
 
 		interface User {
-			id: number;
+			collectionId: string;
+			collectionName: string;
+			created: TDateTime;
+			email: 'niall.mahon1999@gmail.com';
+			emailVisibility: boolean;
+			id: string;
 			name: string;
-			userAuthToken: string;
-			passwordHash: string;
-			createAt: string;
-			updateAt: string;
+			updated: TDateTime;
+			username: string;
+			verified: boolean;
 		}
 
 		interface SelectField {
@@ -45,12 +64,16 @@ declare global {
 		type GeneratedFormFieldInputs = SelectField | InputField;
 
 		interface Project {
-			id: number;
-			name: string;
-			author: User.id;
-			public: boolean;
+			author: string;
+			collectionId: string;
+			collectionName: string;
+			created: TDateTime;
 			datasourceurl: string;
-			address?: string;
+			id: string;
+			name: string;
+			public: boolean;
+			updated: TDateTime;
+			expand: User | {};
 		}
 
 		interface TableComponent {
@@ -92,12 +115,15 @@ declare global {
 			[title: string]: {
 				component: ConstructorOfATypedSvelteComponent;
 				form: ConstructorOfATypedSvelteComponent;
-				schema: AnyZodObject
-			}
+				schema: AnyZodObject;
+			};
 		}
 
-		// interface Locals {}
-		// interface PageData {}
+		interface Locals {
+			pb: Pocketbase;
+			user: User | undefined;
+		}
+
 		// interface Platform {}
 	}
 }

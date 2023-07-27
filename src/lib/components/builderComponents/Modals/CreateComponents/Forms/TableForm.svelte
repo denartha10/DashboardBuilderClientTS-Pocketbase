@@ -2,7 +2,7 @@
     //pretty much the same as the InfoForm component except a tableFormSchema obviously
     
     import type { SuperValidated } from 'sveltekit-superforms';
-    import { superForm } from 'sveltekit-superforms';
+    import { superForm } from 'sveltekit-superforms/client';
     import * as flashModule from 'sveltekit-flash-message/client';
     import type { tableComponentSchema } from '$lib';
 
@@ -31,7 +31,7 @@
             name="title"
             bind:value={$form.title}
             placeholder="Title"
-            aria-invalid={$errors.title}
+            aria-invalid={$errors.title ? 'true' : undefined}
             {...$constraints.title}
         />
         <input
@@ -39,7 +39,7 @@
             name="tableDataKey"
             bind:value={$form.tableDataKey}
             placeholder="Table Data Key"
-            aria-invalid={$errors.tableDataKey}
+            aria-invalid={$errors.tableDataKey ? 'true' : undefined}
             {...$constraints.tableDataKey}
         />
     </fieldset>
