@@ -9,6 +9,8 @@
 
     let currentlySelectedType: string | undefined = undefined;
 
+    $: formData = formObject[currentlySelectedType ?? ''];
+
     const dispatch = createEventDispatcher();
 
     //functions
@@ -32,7 +34,7 @@
             </select>
 
             {#if currentlySelectedType !== undefined}
-                <svelte:component this={formFields[currentlySelectedType].form} {FormData} />
+                <svelte:component this={formFields[currentlySelectedType].form} {formData} />
             {/if}
 
             <input type="button" on:click|preventDefault={close} value="Cancel" />

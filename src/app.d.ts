@@ -12,7 +12,7 @@ import type Pocketbase from 'pocketbase';
 declare global {
 	namespace App {
 		// interface Error {}
-		type Maybe<T> = [Error | null, T | null];
+		type Maybe<T> = [Error, null] |  [null, T];
 
 		//superforms message syncync
 		type Message = {
@@ -109,6 +109,11 @@ declare global {
 			userList?: User[];
 			componentList?: Components[];
 			projectList?: Project[];
+			data?: object | undefined;
+		}
+
+		interface ActtionData{
+			flash?: Message;
 		}
 
 		interface ComponentFormProps {

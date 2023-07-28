@@ -1,0 +1,31 @@
+
+.placeholder {
+	background: transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: dotted 1px var(--pico-primary);
+}
+
+button.placeholder:hover {
+	border-color: var(--pico-primary-inverse);
+}
+
+.rounded {
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+}
+
+.capitalise {
+	text-transform: capitalize;
+}
+
+.grid {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 768px) {
+	.grid {
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+	}
+}

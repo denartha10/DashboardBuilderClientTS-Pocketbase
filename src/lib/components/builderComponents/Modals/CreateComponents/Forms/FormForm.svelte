@@ -26,6 +26,7 @@
 	export let formData: SuperValidated<typeof formComponentSchema>;
 
 	const { form, errors, enhance, constraints } = superForm(formData, {
+		id: 'formForm',
 		dataType: 'json',
 		flashMessage: {
 			module: flashModule
@@ -34,7 +35,7 @@
 	});
 </script>
 
-<form action="?/addForm" method="POST" use:enhance>
+<form action="?/createComponent" method="POST" use:enhance>
 	{#each $form.field as _, i}
 		<!-- add fieldset-->
 
@@ -44,6 +45,7 @@
 			<select
 				name="inputType"
 				bind:value={$form.field[i].inputType}
+				required
 				placeholder="Select Type"
 				aria-invalid={$errors.field?.[i].inputType ? 'true' : undefined}
 				{...$constraints.field?.inputType}
@@ -52,6 +54,7 @@
 					<option value={option}>{option}</option>
 				{/each}
 			</select>
+			{#if $errors.field?.[i].inputType}<small id="valid-helper">{$errors.field?.[i].inputType}</small>{/if}
 
 			<!-- add text input for inputName field-->
 
@@ -59,10 +62,12 @@
 				type="text"
 				name="inputName"
 				bind:value={$form.field[i].inputName}
+				required
 				placeholder="Input Name"
 				aria-invalid={$errors.field?.[i].inputName ? 'true' : undefined}
 				{...$constraints.field?.inputName}
 			/>
+			{#if $errors.field?.[i].inputName}<small id="valid-helper">{$errors.field?.[i].inputName}</small>{/if}
 
 			<!-- add button to remove a form field using filter on the $form store-->
 

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '@picocss/pico';
+	import '../app.css';
     import {page} from '$app/stores';
     import {getFlash} from 'sveltekit-flash-message/client';
     import toast, { Toaster } from 'svelte-french-toast'
@@ -10,12 +11,15 @@
     
     $: segments = $page.url.pathname.split('/').filter(Boolean);
     flash.subscribe(($flash) => {
+		console.log($flash)
         if(!$flash) return;
 
         $flash.type === 'success' ? toast.success($flash.message) : toast.error($flash.message);
 
         flash.set(undefined)
     })
+
+	let username = data?.user?.username
 </script>
 
 <Toaster />
@@ -23,9 +27,9 @@
 <header class="container">
 	<nav>
 		<ul>
-			<li><strong>{data.user ? data.user.username : 'Dashboard'}</strong></li>
+			<li><strong>{username ?? 'Dashboard'}</strong></li>
 		</ul>
-		{#if data.user}
+		{#if username}
 			<ul>
 				<li>
 					<form action="/logout" method="POST">

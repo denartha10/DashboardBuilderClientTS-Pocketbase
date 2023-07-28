@@ -3,9 +3,10 @@
 	export let components: App.Components[];
 	export let editMode: boolean = false;
 
-	let editablePropString = components.map((c) => JSON.stringify(c.props, null, 2));
 	let componentId: number | undefined = undefined;
 	let openDelete: boolean = false;
+
+	const editablePropString = components.map((c) => JSON.stringify(c.props, null, 2));
 
 	$: propList = editablePropString.map((p) => {
 		try {
@@ -23,30 +24,31 @@
 	{:else}
 		<p>Invalid JSON</p>
 	{/if}
-    <br />
-    {#if editMode}
-        <details>
-            <summary>{component.type} props</summary>
-            <textarea contenteditable bind:value={editablePropString[i]}/>
-        </details>
-        <button
-            on:click|preventDefault={() => {
-                componentId = component.id;
-                openDelete = true;
-            }}
-        >
-            Delete
-        </button>
-    {/if}
+	<br />
+	{#if editMode}
+		<details>
+			<summary>{component.type} props</summary>
+			<textarea contenteditable bind:value={editablePropString[i]} />
+			<button
+				on:click|preventDefault={() => {
+					componentId = component.id;
+					openDelete = true;
+				}}
+			>
+				Delete
+			</button>
+		</details>
+	{/if}
+	<br>
 {/each}
 
 {#if componentId !== undefined}
-    <DeleteComponentModal
-        bind:id={componentId}
-        bind:openDelete
-        on:deleteClose={() => {
-            componentId = undefined;
-            openDelete = false;
-        }}
-    />
+	<DeleteComponentModal
+		bind:id={componentId}
+		bind:openDelete
+		on:deleteClose={() => {
+			componentId = undefined;
+			openDelete = false;
+		}}
+	/>
 {/if}

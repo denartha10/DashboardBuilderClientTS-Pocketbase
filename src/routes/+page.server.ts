@@ -1,5 +1,5 @@
 import { safeAwait, serialiseNonPOJO } from '$lib';
-import type { PageServerLoad } from './login/$types';
+import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {
     

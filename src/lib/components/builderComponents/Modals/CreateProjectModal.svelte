@@ -35,24 +35,32 @@
 				closeCreate();
 			}}
 		>
-			<input
-				name="name"
-				type="text"
-				required
-				placeholder="Project Name"
-				aria-invalid={$errors.name ? 'true' : undefined}
-				bind:value={$form.name}
-				{...$constraints.name}
-			/>
-			<input
-				name="datasourceurl"
-				type="url"
-				required
-				placeholder="Datasource full URL"
-				aria-invalid={$errors.datasourceurl ? 'true' : undefined}
-				bind:value={$form.datasourceurl}
-				{...$constraints.datasourceurl}
-			/>
+			<label>
+				Name
+				<input
+					name="name"
+					type="text"
+					required
+					placeholder="Project Name"
+					aria-invalid={$errors.name ? 'true' : undefined}
+					bind:value={$form.name}
+					{...$constraints.name}
+				/>
+				{#if $errors.name}<small id="invalid-helper">{$errors.name}</small>{/if}
+			</label>
+			<label>
+				Datasource URL
+				<input
+					name="datasourceurl"
+					type="url"
+					required
+					placeholder="Datasource full URL"
+					aria-invalid={$errors.datasourceurl ? 'true' : undefined}
+					bind:value={$form.datasourceurl}
+					{...$constraints.datasourceurl}
+				/>
+				{#if $errors.datasourceurl}<small id="invalid-helper">{$errors.datasourceurl}</small>{/if}
+			</label>
 			<input type="submit" value="Create" />
 			<input type="button" class="secondary" on:click|preventDefault={closeCreate} value="Close" />
 		</form>

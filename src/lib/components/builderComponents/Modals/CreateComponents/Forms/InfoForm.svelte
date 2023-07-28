@@ -9,6 +9,7 @@
 	export let formData: SuperValidated<typeof infoComponentSchema>;
 
 	const { form, errors, enhance, constraints } = superForm(formData, {
+		id: 'infoForm',
 		flashMessage: {
 			module: flashModule
 		},
@@ -16,35 +17,35 @@
 	});
 </script>
 
-<!--
-    This page has a form with an action to ?/addInfo and a method of POST
-    The form uses the enhance function
-    The form has a fieldset which is not a grid
-    It has an input of type text with a name of title and a bind:value of $form.title
-    It has an input of type text with a name of description and a bind:value of $form.description
--->
-
-
-
-
-<form action="?/addInfo" method="POST" use:enhance>
+<form action="?/createComponent" method="POST" use:enhance>
 	<fieldset>
-		<input
-			type="text"
-			name="title"
-			bind:value={$form.title}
-			placeholder="Title"
-			aria-invalid={$errors.title ? 'true' : undefined}
-			{...$constraints.title}
-		/>
-		<input
-			type="text"
-			name="description"
-			bind:value={$form.description}
-			placeholder="Description"
-			aria-invalid={$errors.description ? 'true' : undefined}
-			{...$constraints.description}
-		/>
+		<label>
+			Title
+			<input
+				type="text"
+				name="title"
+				bind:value={$form.title}
+				required
+				placeholder="Title"
+				aria-invalid={$errors.title ? 'true' : undefined}
+				{...$constraints.title}
+			/>
+			{#if $errors.title}<small id="invalid-helper">{$errors.title}</small>{/if}
+		</label>
+		
+		<label>
+			Description
+			<input
+				type="text"
+				name="description"
+				bind:value={$form.description}
+				required
+				placeholder="Description"
+				aria-invalid={$errors.description ? 'true' : undefined}
+				{...$constraints.description}
+			/>
+			{#if $errors.description}<small id="invalid-helper">{$errors.description}</small>{/if}
+		</label>
 	</fieldset>
 
 	<input type="submit" value="Submit" />

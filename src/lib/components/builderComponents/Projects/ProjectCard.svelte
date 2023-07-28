@@ -6,7 +6,7 @@
 	export let project: App.Project;
 
 	const editProject = (project: App.Project) => {
-		dispatch('delete', { project });
+		dispatch('edit', { project });
 	};
 
 	const deleteProject = (project: App.Project) => {
@@ -17,7 +17,7 @@
 <div>
 	<article>
 		<h3>{project.name}</h3>
-		<a href={project.address}>View Project</a>
+		<a href={'/projects/'+project.id}>View Project</a>
 		<footer>
 			<button
 				on:click|preventDefault={() => {

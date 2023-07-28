@@ -27,8 +27,8 @@ const tableComponentSchema = z.object({
 
 //infoComponentSchema an object with title with min 1 and a description with min 1
 const infoComponentSchema = z.object({
-	title: z.string().min(1),
-	description: z.string().min(1)
+	title: z.string().min(4),
+	description: z.string().min(20)
 });
 
 // formComponentSchema an object with a key named "fields" that is an array of objects with a inputName and inputType both strings of min 1
@@ -43,32 +43,32 @@ const formComponentSchema = z.object({
 
 // delete project schema an object with id of positive int
 const deleteProjectSchema = z.object({
-    id: z.number().positive()
-})
+	id: z.string().nonempty()
+});
 
 // create project schema an object with title of min 4 and max 50 and a datasourceurl of type url
 const createProjectSchema = z.object({
-    name: z.string().min(4).max(50),
-    datasourceurl: z.string().url()
-})
+	name: z.string().min(4).max(50),
+	datasourceurl: z.string().url()
+});
 
 // update project schema is the same as create project schema but with an id of positive int and a public of boolean
 const updateProjectSchema = z.object({
-    id: z.number().positive(),
-    name: z.string().min(4).max(50),
-    datasourceurl: z.string().url(),
-    public: z.boolean()
-})
+	id: z.string().nonempty(),
+	name: z.string().min(4).max(50),
+	datasourceurl: z.string().url(),
+	public: z.boolean()
+});
 
 //export all schemas
 
 export {
-    loginSchema,
-    registerSchema,
-    tableComponentSchema,
-    infoComponentSchema,
-    formComponentSchema,
-    deleteProjectSchema,
-    createProjectSchema,
-    updateProjectSchema
-}
+	loginSchema,
+	registerSchema,
+	tableComponentSchema,
+	infoComponentSchema,
+	formComponentSchema,
+	deleteProjectSchema,
+	createProjectSchema,
+	updateProjectSchema
+};

@@ -9,6 +9,7 @@
     export let formData: SuperValidated<typeof tableComponentSchema>;
 
     const { form, errors, enhance, constraints } = superForm(formData, {
+        id: 'tableForm',
         flashMessage: {
             module: flashModule
         },
@@ -16,32 +17,34 @@
     });
 </script>
 
-<!--
-    This page has a form with an action to ?/addTable and a method of POST
-    The form uses the enhance function
-    The form has a fieldset which is not a grid
-    It has an input of type text with the name of title and a bind:value of $form.title
-    It has an input of type text with a name of tableDataKey and a bind:value of $form.tableDataKey
--->
-
-<form action="?/addTable" method="POST" use:enhance>
+<form action="?/createComponent" method="POST" use:enhance>
     <fieldset>
-        <input
-            type="text"
-            name="title"
-            bind:value={$form.title}
-            placeholder="Title"
-            aria-invalid={$errors.title ? 'true' : undefined}
-            {...$constraints.title}
-        />
-        <input
-            type="text"
-            name="tableDataKey"
-            bind:value={$form.tableDataKey}
-            placeholder="Table Data Key"
-            aria-invalid={$errors.tableDataKey ? 'true' : undefined}
-            {...$constraints.tableDataKey}
-        />
+        <label>
+            Title
+            <input
+                type="text"
+                name="title"
+                bind:value={$form.title}
+                required
+                placeholder="Title"
+                aria-invalid={$errors.title ? 'true' : undefined}
+                {...$constraints.title}
+            />
+            {#if $errors.title}<small id="invalid-helper">{$errors.title}</small>{/if}
+        </label>
+        <label>
+            Table Data Key
+            <input
+                type="text"
+                name="tableDataKey"
+                bind:value={$form.tableDataKey}
+                required
+                placeholder="Table Data Key"
+                aria-invalid={$errors.tableDataKey ? 'true' : undefined}
+                {...$constraints.tableDataKey}
+            />
+            {#if $errors.tableDataKey}<small id="invalid-helper">{$errors.tableDataKey}</small>{/if}
+        </label>
     </fieldset>
 
     <input type="submit" value="Submit" />
