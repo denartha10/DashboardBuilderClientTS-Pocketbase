@@ -1,4 +1,7 @@
 <script lang="ts">
+
+	// TODO: #2 Change from picocss to skeleton - limit of pico really shows here
+
 	import '@picocss/pico';
 	import '../app.css';
     import {page} from '$app/stores';
